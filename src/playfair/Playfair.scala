@@ -4,7 +4,6 @@ package playfair
 import scala.io.StdIn
 import java.io.FileNotFoundException
 import java.io.IOException
-import org.scalatest._
 
 /**
  * Implementation of the Playfair Cipher encryption/decryption system.
@@ -25,13 +24,10 @@ object Playfair {
       selection match  {
         case "e" => val pw = getUserInput("Password")
                     if (!pw.isEmpty()) {
-                       val pw1 = "Pennsylvania"
                       val fn = getUserInput("Filename")
                       if (!fn.isEmpty()) {
-                        val fn1 = "/Users/keithdolan/Documents/playfair1"
-                        readFile(fn1) match {
-                         
-                          case Some(plainText) => val coder = new Coder(pw1)
+                        readFile(fn) match {
+                          case Some(plainText) => val coder = new Coder(pw)
                                                   System.out.println(coder.encode(plainText))
                           
                           case None =>  System.out.println("Unable to read input file: " + fn)
@@ -41,13 +37,10 @@ object Playfair {
         
         case "d" => val pw = getUserInput("Password")
                     if (!pw.isEmpty()) {
-                       val pw1 = "Pennsylvania"
                       val fn = getUserInput("Filename")
                       if (!fn.isEmpty()) {
-                        val fn1 = "/Users/keithdolan/Documents/pf_encrypted"
-                        readFile(fn1) match {
-                         
-                          case Some(cipherText) => val coder = new Coder(pw1)
+                        readFile(fn) match {   
+                          case Some(cipherText) => val coder = new Coder(pw)
                                                   System.out.println(coder.decode(cipherText))
                           
                           case None =>  System.out.println("Unable to read input file: " + fn)

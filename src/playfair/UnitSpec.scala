@@ -3,21 +3,11 @@ package playfair
 import org.scalatest._
 
 
-abstract class UnitSpec extends FlatSpec {
+abstract class UnitSpec extends FlatSpec with Matchers {
   
-  val pw = "Pennsylvania"
-  val fn = "/Users/keithdolan/Documents/playfair1"
-  
-  Playfair.readFile(fn) match {
-    case Some(plainText) => val coder = new Coder(pw)
-      System.out.println(coder.encode(plainText))
-                          
-    case None =>  System.out.println("Unable to read input file: " + fn)
+  "An InputFormatter" should "remove whitespace and punctuation" in {
+    val formatter = new InputFormatter("AbbCDE ; ,, ooOx")
+    var il = formatter.getInput().mkString("")
+    il.compare("abbcdeoxoxox") should be (0)
   }
-  
-  
-  //System.out.println(coder.encode(plainText))
-  
-  //val fn2 = "/Users/keithdolan/Documents/pf_encrypted"
-
 }

@@ -49,6 +49,7 @@ object Playfair {
                     }
         
         case "q" => System.exit(1)
+   
         case _ => System.out.print("Selection " + selection + " is invalid. Select e,d or q only") 
       }
     }
